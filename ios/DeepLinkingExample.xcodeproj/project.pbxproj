@@ -194,7 +194,6 @@
 				6DE1ACA01B7ADD6696A7CD1E /* Pods-DeepLinkingExampleTests.debug.xcconfig */,
 				9C222C1B6C0B2E665212B200 /* Pods-DeepLinkingExampleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +307,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

@@ -174,7 +174,32 @@ yarn add @types/jest @types/node @types/react @types/react-native @types/react-n
 ### 添加 `src/App.tsx` 文件
 
 ```ts
+import React from 'react'
 
+import { createAppContainer, createStackNavigator } from 'react-navigation'
+
+import About from './screens/About'
+import Article from './screens/Article'
+import Home from './screens/Home'
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: { screen: Home },
+    About: { screen: About, path: 'about' },
+    Article: { screen: Article, path: 'article/:id' },
+  },
+  {
+    initialRouteName: 'Home',
+  },
+)
+
+const prefix = 'deep-linking://'
+
+const App = createAppContainer(AppNavigator)
+
+const MainApp = () => <App uriPrefix={prefix} />
+
+export default MainApp
 ```
 
 ### 添加 `src/screens/Home.tsx` 文件
@@ -184,10 +209,72 @@ import React from 'react';
 
 ```
 
+### 添加 `src/screens/About.tsx`
+
+```ts
+import React from 'react'
+
+import { StyleSheet, Text, View } from 'react-native'
+
+import { NavigationScreenComponent } from 'react-navigation'
+
+interface IProps {}
+
+interface IState {}
+
+const AboutScreen: NavigationScreenComponent<IProps, IState> = props => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>About Page</Text>
+    </View>
+  )
+}
+
+AboutScreen.navigationOptions = {
+  title: 'About',
+}
+
+export default AboutScreen
+
+const styles = StyleSheet.create({
+  container: {},
+  title: {},
+})
+```
+
 ### 添加 `src/screens/Article.tsx`
 
 ```ts
+import React from 'react'
 
+import { StyleSheet, Text, View } from 'react-native'
+
+import { NavigationScreenComponent } from 'react-navigation'
+
+interface NavigationParams {
+  id: string
+}
+
+const ArticleScreen: NavigationScreenComponent<NavigationParams> = ({ navigation }) => {
+  const { params } = navigation.state
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Article {params ? params.id : 'No ID'}</Text>
+    </View>
+  )
+}
+
+ArticleScreen.navigationOptions = {
+  title: 'Article',
+}
+
+export default ArticleScreen
+
+const styles = StyleSheet.create({
+  container: {},
+  title: {},
+})
 ```
 
 ## 配置 iOS

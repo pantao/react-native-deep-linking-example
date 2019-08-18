@@ -1,32 +1,30 @@
-import React from 'react';
+import React from 'react'
 
-import {View, Text, StyleSheet} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
 
-import {NavigationScreenComponent} from 'react-navigation';
+import { NavigationScreenComponent } from 'react-navigation'
 
 interface NavigationParams {
-  id: string;
+  id: string
 }
 
-const ArticleScreen: NavigationScreenComponent<NavigationParams> = ({
-  navigation,
-}) => {
-  const {params} = navigation.state;
+const ArticleScreen: NavigationScreenComponent<NavigationParams> = ({ navigation }) => {
+  const { params } = navigation.state
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Article {params.id}</Text>
+      <Text style={styles.title}>Article {params ? params.id : 'No ID'}</Text>
     </View>
-  );
-};
+  )
+}
 
 ArticleScreen.navigationOptions = {
   title: 'Article',
-};
+}
 
-export default ArticleScreen;
+export default ArticleScreen
 
 const styles = StyleSheet.create({
   container: {},
   title: {},
-});
+})

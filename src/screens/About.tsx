@@ -8,19 +8,19 @@ interface IProps {}
 
 interface IState {}
 
-const HomeScreen: NavigationScreenComponent<IProps, IState> = props => {
+const AboutScreen: NavigationScreenComponent<IProps, IState> = props => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Page</Text>
+      <Text style={styles.title}>About Page</Text>
     </View>
   )
 }
 
-HomeScreen.navigationOptions = {
-  title: 'Home',
+AboutScreen.navigationOptions = {
+  title: 'About',
 }
 
-export default HomeScreen
+export default AboutScreen
 
 const styles = StyleSheet.create({
   container: {},

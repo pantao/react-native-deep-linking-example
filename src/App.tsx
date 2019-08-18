@@ -1,24 +1,26 @@
-import React from 'react';
+import React from 'react'
 
-import {createAppContainer, createStackNavigator} from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation'
 
-import Home from './screens/Home';
-import Article from './screens/Article';
+import About from './screens/About'
+import Article from './screens/Article'
+import Home from './screens/Home'
 
 const AppNavigator = createStackNavigator(
   {
-    Home: {screen: Home},
-    Article: {screen: Article, path: '/article/:id'},
+    Home: { screen: Home },
+    About: { screen: About, path: 'about' },
+    Article: { screen: Article, path: 'article/:id' },
   },
   {
     initialRouteName: 'Home',
   },
-);
+)
 
-const prefix = 'deep-linking://deep-linking';
+const prefix = 'deep-linking://'
 
-const App = createAppContainer(AppNavigator);
+const App = createAppContainer(AppNavigator)
 
-const MainApp = () => <App uriPrefix={prefix} />;
+const MainApp = () => <App uriPrefix={prefix} />
 
-export default MainApp;
+export default MainApp
