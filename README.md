@@ -272,3 +272,10 @@ deep-linking://article/4
 ```sh
 adb shell am start -W -a android.intent.action.VIEW -d "deep-linking://article/3" com.deeplinkingexample;
 ```
+
+## 附录
+
+点击以下链接即可：
+
+- [HOME](deep-linking://home)
+- [Article](deep-linking://article/4)
